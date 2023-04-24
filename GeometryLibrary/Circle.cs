@@ -8,6 +8,7 @@ namespace GeometryLibrary
 
         public Circle(double radius)
         {
+            CheckError(radius);
             _radius = radius;
         }
 
@@ -24,6 +25,14 @@ namespace GeometryLibrary
         public double CalculateArea()
         {
             return Math.PI * _radius * _radius;
+        }
+        
+        public void CheckError(double radius)
+        {
+            if (radius <= 0)
+            {
+                throw new ArgumentException("Radius must be greater than zero");
+            }
         }
     }
 }
