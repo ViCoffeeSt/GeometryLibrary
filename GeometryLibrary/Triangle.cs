@@ -10,11 +10,13 @@ namespace GeometryLibrary
 
         public Triangle(double[] sides)
         {
+            CheckError(sides);
             SetSide(sides);
         }
 
         public void SetSide(double[] sides)
         {
+            CheckError(sides);
             _sides = sides;
             Array.Sort(_sides);
             _isRight = sides[2] * sides[2] == sides[0] * sides[0] + sides[1] * sides[1];
@@ -35,6 +37,14 @@ namespace GeometryLibrary
         public bool IsRight()
         {
             return _isRight;
+        }
+        
+        public void CheckError(double [] sides)
+        {
+            if (sides == null || sides.Length != 3 || sides.Any(s => s <= 0))
+            {
+                throw new ArgumentException("The lengths of the sides of a triangle must be greater than zero and there must be three of them");
+            }
         }
     }
 }
