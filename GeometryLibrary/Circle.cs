@@ -14,6 +14,7 @@ namespace GeometryLibrary
 
         public void SetRadius(double radius)
         {
+            CheckError(radius);
             _radius = radius;
         }
 
